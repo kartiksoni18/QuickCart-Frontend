@@ -2,7 +2,7 @@ This is a new [**React Native**](https://reactnative.dev) project, bootstrapped 
 
 # Getting Started
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+> **Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
 
 ## Step 1: Start the Metro Server
 
@@ -77,3 +77,35 @@ To learn more about React Native, take a look at the following resources:
 - [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
 - [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
 - [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+
+# if changed in babel the always reset cache the project
+
+npm start -- --reset-cache
+
+# Adding package
+
+react-native-community/geolocation -> need to add permissions too in android/app/main/AndroidManifest.xml
+android:usesCleartextTraffic="true"
+android:hardwareAccelerated="true" - for smooth animations
+
+also add the permissions ->
+<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+<uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+
+and android:windowSoftInputMode="adjustNothing"
+
+also add the permissions in INFOplist file
+
+<!-- Location Permissions -->
+
+<key>NSLocationWhenInUseUsageDescription</key>
+<string>Your location is used to show the delivery progress on the map</string>
+<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+<string>Your location is used to show the delivery progress on the map</string>
+<key>NSLocationAlwaysUsageDescription</key>
+<string>Your location is used to show the delivery progress on the map</string>
+
+<!-- Location Permissions -->
+
+# use navigation as mentioned in the utils/NavigationUtils and then add it to the NavigationContainer in the Navigation.tsx
