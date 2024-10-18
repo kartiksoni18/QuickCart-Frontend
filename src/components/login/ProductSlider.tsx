@@ -13,10 +13,10 @@ const ProductSlider = () => {
   }, []);
 
   return (
-    <View pointerEvents="none">
+    <View pointerEvents="none" className='mt-4'>
       <AutoScroll
         endPaddingWidth={0}
-        duration={5000}
+        duration={10000}
         style={{position: 'absolute', zIndex: -2}}>
         <View className="flex-1">
           {rows.map((row: any, rowIndex: number) => {

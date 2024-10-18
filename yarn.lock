@@ -2072,6 +2072,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@r0b0t3d/react-native-collapsible@npm:^1.4.3":
+  version: 1.4.3
+  resolution: "@r0b0t3d/react-native-collapsible@npm:1.4.3"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+    react-native-gesture-handler: "*"
+    react-native-reanimated: ">=3.0.0"
+  checksum: 2dc4ab757e855977cbe7c30d4b5e0ba776f0ac34b8afd06b9cc9dab6102cfbd08ba8c4fff2ec946331eeb6bb27d3cac064b7e23a4c1d63adc4690f49227e85b5
+  languageName: node
+  linkType: hard
+
 "@react-native-community/cli-clean@npm:14.1.0":
   version: 14.1.0
   resolution: "@react-native-community/cli-clean@npm:14.1.0"
@@ -3134,6 +3146,7 @@ __metadata:
     "@babel/preset-env": ^7.20.0
     "@babel/runtime": ^7.20.0
     "@homielab/react-native-auto-scroll": ^0.0.10
+    "@r0b0t3d/react-native-collapsible": ^1.4.3
     "@react-native-community/geolocation": ^3.4.0
     "@react-native/babel-preset": 0.75.4
     "@react-native/eslint-config": 0.75.4

@@ -8,10 +8,12 @@
     "reset-cache": "react-native start --reset-cache",
     "lint": "eslint .",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "pod": "cd ios && pod install && cd .."
   },
   "dependencies": {
     "@homielab/react-native-auto-scroll": "^0.0.10",
+    "@r0b0t3d/react-native-collapsible": "^1.4.3",
     "@react-native-community/geolocation": "^3.4.0",
     "@react-navigation/native": "^6.1.18",
     "@react-navigation/native-stack": "^6.11.0",
