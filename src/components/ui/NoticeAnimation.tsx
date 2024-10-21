@@ -9,6 +9,7 @@ interface NoticeAnimationProps {
 }
 
 const NOTICE_HEIGHT = -(noticeHeight + 12);
+
 const NoticeAnimation: FC<NoticeAnimationProps> = ({
   noticePosition,
   children,
@@ -30,7 +31,7 @@ const NoticeAnimation: FC<NoticeAnimationProps> = ({
           {
             paddingTop: noticePosition.interpolate({
               inputRange: [NOTICE_HEIGHT, 0],
-              outputRange: [0, noticeHeight + 20],
+              outputRange: [0, NOTICE_HEIGHT + 20],
             }),
           },
         ]}>
