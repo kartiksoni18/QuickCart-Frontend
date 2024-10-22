@@ -126,6 +126,7 @@ const ProductDashboard = () => {
             nestedScrollEnabled
             style={styles.panelContainer}
             showsVerticalScrollIndicator={false}>
+            {/* here the content shown on the screen */}
             <Content />
 
             <View

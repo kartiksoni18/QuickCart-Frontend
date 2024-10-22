@@ -9,7 +9,7 @@ interface AdCarouselProps {
   adData: any;
 }
 const AdCarousel: FC<AdCarouselProps> = ({adData}) => {
-  const progressValue = useSharedValue(0);
+  // const progressValue = useSharedValue(0);
   const baseOptions = {
     vertical: false,
     width: screenWidth,
