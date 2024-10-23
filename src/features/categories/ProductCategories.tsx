@@ -9,6 +9,7 @@ import {
 } from '@services/productService';
 import ProductList from './ProductList';
 import CustomText from '@components/ui/CustomText';
+import withCart from '@features/cart/withCart';
 
 const ProductCategories = () => {
   const [categories, setCategories] = useState<any[]>([]);
@@ -91,7 +92,7 @@ const ProductCategories = () => {
   );
 };
 
-export default ProductCategories;
+export default withCart(ProductCategories);
 
 const styles = StyleSheet.create({
   container: {

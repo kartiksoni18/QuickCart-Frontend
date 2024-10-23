@@ -3,6 +3,7 @@ import React, {FC} from 'react';
 import {screenHeight} from '@utils/Scaling';
 import {Colors, Fonts} from '@utils/Constants';
 import CustomText from '@components/ui/CustomText';
+import UniversalAdd from '@components/ui/UniversalAdd';
 interface ProductItemProps {
   item: any;
   index: number;
@@ -43,6 +44,7 @@ const ProductItem: FC<ProductItemProps> = ({item, index}) => {
               ₹{item?.discountPrice}
             </CustomText>
           </View>
+          <UniversalAdd item={item} />
         </View>
       </View>
     </View>

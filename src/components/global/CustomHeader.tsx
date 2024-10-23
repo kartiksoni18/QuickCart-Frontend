@@ -22,15 +22,14 @@ const CustomHeader: FC<CustomHeaderProps> = ({title, search = false}) => {
         <TouchableOpacity onPress={() => goBack()}>
           <Icon name="chevron-back" size={RFValue(16)} color={Colors.text} />
         </TouchableOpacity>
-        <CustomText
-          variant="h5"
-          style={styles.text}
-          fontFamily={Fonts.SemiBold}>
+        <CustomText variant="h5" fontFamily={Fonts.SemiBold}>
           {title}
         </CustomText>
-        {search && (
-          <Icon name="search" size={RFValue(16)} color={Colors.text} />
-        )}
+        <View>
+          {search && (
+            <Icon name="search" size={RFValue(16)} color={Colors.text} />
+          )}
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -48,8 +47,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderBottomWidth: 0.7,
     borderBottomColor: Colors.border,
-  },
-  text: {
-    // flex: 1,
   },
 });

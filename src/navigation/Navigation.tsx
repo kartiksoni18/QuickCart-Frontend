@@ -8,6 +8,9 @@ import DeliveryPartnerLogin from '@features/auth/DeliveryPartnerLogin';
 import ProductDashboard from '@features/dashboard/ProductDashboard';
 import DeliveryDashboard from '@features/delivery/DeliveryDashboard';
 import ProductCategories from '@features/categories/ProductCategories';
+import ProductOrder from '@features/order/ProductOrder';
+import OrderSuccess from '@features/order/OrderSuccess';
+import LiveTracking from '@features/map/LiveTracking';
 
 const Stack = createNativeStackNavigator();
 const Navigation: FC = () => {
@@ -41,6 +44,21 @@ const Navigation: FC = () => {
           options={{animation: 'fade'}}
           name="ProductCategories"
           component={ProductCategories}
+        />
+        <Stack.Screen
+          options={{animation: 'fade'}}
+          name="ProductOrder"
+          component={ProductOrder}
+        />
+        <Stack.Screen
+          options={{animation: 'fade'}}
+          name="OrderSuccess"
+          component={OrderSuccess}
+        />
+        <Stack.Screen
+          options={{animation: 'fade'}}
+          name="LiveTracking"
+          component={LiveTracking}
         />
       </Stack.Navigator>
     </NavigationContainer>
