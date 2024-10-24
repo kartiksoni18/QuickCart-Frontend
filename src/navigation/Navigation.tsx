@@ -11,6 +11,7 @@ import ProductCategories from '@features/categories/ProductCategories';
 import ProductOrder from '@features/order/ProductOrder';
 import OrderSuccess from '@features/order/OrderSuccess';
 import LiveTracking from '@features/map/LiveTracking';
+import Profile from '@features/profile/Profile';
 
 const Stack = createNativeStackNavigator();
 const Navigation: FC = () => {
@@ -59,6 +60,11 @@ const Navigation: FC = () => {
           options={{animation: 'fade'}}
           name="LiveTracking"
           component={LiveTracking}
+        />
+        <Stack.Screen
+          options={{animation: 'fade'}}
+          name="Profile"
+          component={Profile}
         />
       </Stack.Navigator>
     </NavigationContainer>

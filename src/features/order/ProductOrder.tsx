@@ -30,6 +30,7 @@ const ProductOrder = () => {
 
   const handlePlaceOrder = async () => {
     try {
+      // setCurrentOrder(null);
       if (currentOrder !== null) {
         Alert.alert('Let your current order be delivered first');
         return;
@@ -48,7 +49,6 @@ const ProductOrder = () => {
       setLoading(true);
 
       const data = await createOrder(formattedData, totalItemPrice);
-      console.log('data', data);
 
       if (data != null) {
         setCurrentOrder(data);

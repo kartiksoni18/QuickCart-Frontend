@@ -23,12 +23,13 @@ const withCart = <P extends object>(
     );
   };
 
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-    },
-  });
   return WithCartComponent;
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
 
 export default withCart;

@@ -5,6 +5,7 @@ import {Fonts} from '@utils/Constants';
 import {useAuthStore} from '@state/authStore';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {RFValue} from 'react-native-responsive-fontsize';
+import {navigate} from '@utils/NavigationUtils';
 
 interface HeaderProps {
   showNotice: () => void;
@@ -46,7 +47,7 @@ const Header: FC<HeaderProps> = ({showNotice}) => {
           <Icon name="menu-down" size={RFValue(20)} color="#fff" />
         </View>
       </View>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => navigate('Profile')}>
         <Icon name="account-circle-outline" color="#fff" size={RFValue(30)} />
       </TouchableOpacity>
     </View>
