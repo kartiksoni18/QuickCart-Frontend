@@ -30,6 +30,7 @@ const LiveTracking = () => {
 
   const fetchOrderDetails = async () => {
     const data = await getOrderById(currentOrder?._id);
+    console.log('data', JSON.stringify(data));
     setCurrentOrder(data);
   };
 
@@ -43,7 +44,7 @@ const LiveTracking = () => {
         bounces={false}
         contentContainerStyle={styles.scrollContent}
         showsVerticalScrollIndicator={false}>
-        <LiveMap />
+        {/* <LiveMap pickupLocation={}/> */}
         <View style={styles.flexRow}>
           <View style={styles.iconContainer}>
             <Icon

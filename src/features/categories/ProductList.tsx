@@ -13,6 +13,7 @@ const ProductList: FC<ProductListProps> = ({data}) => {
 
   return (
     <FlatList
+      showsVerticalScrollIndicator={false}
       data={data}
       renderItem={renderItem}
       style={styles.container}
@@ -34,6 +35,6 @@ const styles = StyleSheet.create({
   content: {
     width: '100%',
     paddingVertical: 10,
-    paddingBottom: 20,
+    paddingBottom: 120,
   },
 });

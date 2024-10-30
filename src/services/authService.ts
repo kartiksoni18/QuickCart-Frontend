@@ -34,18 +34,19 @@ export const deliveryPartnerLogin = async (email: string, password: string) => {
       email,
       password,
     });
+
     const {accessToken, refreshToken, deliveryPartner} = response?.data;
     tokenStorage.set('accessToken', accessToken);
     tokenStorage.set('refreshToken', refreshToken);
+
     const {user, setUser} = useAuthStore.getState();
 
-    if (user) {
+    if (deliveryPartner) {
       const updatedUser = {
         ...deliveryPartner,
-        latitude: user.latitude,
-        longitude: user.longitude,
       };
 
+      console.log('updatedUser', updatedUser);
       setUser(updatedUser);
     }
   } catch (error) {
@@ -55,6 +56,14 @@ export const deliveryPartnerLogin = async (email: string, password: string) => {
 };
 
 export const refetchUser = async (setUser: any) => {
+  try {
+    const response = await appAxios.get(`/user`);
+    setUser(response?.data?.user);
+  } catch (error) {
+    console.log('Login error', error);
+  }
+};
+export const updateUserLocation = async (data: any, setUser: any) => {
   try {
     const response = await appAxios.get(`/user`);
     setUser(response?.data?.user);

@@ -47,7 +47,7 @@ const OrderItem: FC<{item: Order; index: number}> = ({item, index}) => {
             fontFamily={Fonts.SemiBold}
             // style={{marginTop: 10}}
           >
-            ₹{item.totalPrice}
+            ₹{item.totalPrice + 34}
           </CustomText>
           <CustomText variant="h9">
             {formatToISOString(item.createdAt)}

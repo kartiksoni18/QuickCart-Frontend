@@ -22,6 +22,7 @@ interface DecodeToken {
 
 const SplashScreen = () => {
   const {user, setUser} = useAuthStore();
+  console.log('user onspa', user);
 
   const tokenCheck = async () => {
     const accessToken = tokenStorage.getString('accessToken') as string;
@@ -65,21 +66,19 @@ const SplashScreen = () => {
   useEffect(() => {
     const fetchUserLocation = () => {
       try {
-        if (!user?.latitude || !user?.longitude) {
-          GeoLocation.requestAuthorization();
-          GeoLocation.getCurrentPosition(
-            position => {
-              const {latitude, longitude} = position?.coords;
+        GeoLocation.requestAuthorization();
+        GeoLocation.getCurrentPosition(
+          position => {
+            const {latitude, longitude} = position?.coords;
 
-              if (latitude && longitude) {
-                setUser({...user, latitude, longitude});
-              }
-            },
-            error => {
-              Alert.alert('Erorr fetching location', error.message);
-            },
-          );
-        }
+            if (latitude && longitude) {
+              setUser({...user, latitude, longitude});
+            }
+          },
+          error => {
+            Alert.alert('Erorr fetching location', error.message);
+          },
+        );
 
         tokenCheck();
       } catch (error) {

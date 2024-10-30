@@ -11,6 +11,7 @@ import CustomTextInput from '@components/ui/CustomTextInput';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {RFValue} from 'react-native-responsive-fontsize';
 import CustomButton from '@components/ui/CustomButton';
+import {useAuthStore} from '@state/authStore';
 
 const DeliveryPartnerLogin = () => {
   const [email, setEmail] = useState('');

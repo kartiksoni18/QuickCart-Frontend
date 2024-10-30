@@ -12,6 +12,7 @@ import ProductOrder from '@features/order/ProductOrder';
 import OrderSuccess from '@features/order/OrderSuccess';
 import LiveTracking from '@features/map/LiveTracking';
 import Profile from '@features/profile/Profile';
+import DeliveryMap from '@features/delivery/DeliveryMap';
 
 const Stack = createNativeStackNavigator();
 const Navigation: FC = () => {
@@ -65,6 +66,11 @@ const Navigation: FC = () => {
           options={{animation: 'fade'}}
           name="Profile"
           component={Profile}
+        />
+        <Stack.Screen
+          options={{animation: 'fade'}}
+          name="DeliveryMap"
+          component={DeliveryMap}
         />
       </Stack.Navigator>
     </NavigationContainer>
