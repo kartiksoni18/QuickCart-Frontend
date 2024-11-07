@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, {AxiosRequestConfig} from 'axios';
 import {BASE_URL} from './config';
 import {tokenStorage} from '@state/storage';
 import {refresh_token} from './authService';
@@ -9,11 +9,25 @@ export const appAxios = axios.create({
 });
 
 // work before for sending request to the server
-appAxios.interceptors.request.use(async config => {
+appAxios.interceptors.request.use(async (config: any) => {
   const accessToken = tokenStorage.getString('accessToken');
-  if (accessToken) {
-    config.headers.Authorization = `Bearer ${accessToken}`;
+
+  const useSecretKey = config.useSecretKey; // Flag to decide whether to use secretKey
+
+  if (useSecretKey && config.secretKey) {
+    // If we need to use a secret key, add it to the Authorization header
+    config.headers = {
+      ...config.headers, // Merge with any other headers passed in the request
+      Authorization: `Bearer ${config.secretKey}`,
+    };
+  } else if (accessToken) {
+    // Default to Bearer token if no secret key is provided
+    config.headers = {
+      ...config.headers, // Merge with any other headers passed in the request
+      Authorization: `Bearer ${accessToken}`,
+    };
   }
+
   return config;
 });
 

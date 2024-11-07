@@ -15,9 +15,13 @@ import TabBar from '@components/delivery/TabBar';
 import {fetchOrders} from '@services/orderService';
 import CustomText from '@components/ui/CustomText';
 import OrderItem from '@components/delivery/OrderItem';
+import withLiveOrder from './withLiveOrder';
 
 const DeliveryDashboard = () => {
   const {user} = useAuthStore();
+
+  console.log('user', user);
+
   const [selectedTab, setSelectedTab] = useState<'available' | 'delivered'>(
     'available',
   );
@@ -31,11 +35,8 @@ const DeliveryDashboard = () => {
       setRefreshing(true);
       setLoading(true);
 
-      console.log('user', user);
-
       const data = await fetchOrders(selectedTab, user?._id, user?.branch);
 
-      // console.log('data', JSON.stringify(data));
       setData(data);
     } catch (error) {
       console.log('error fetching orders', error);
@@ -90,7 +91,7 @@ const DeliveryDashboard = () => {
   );
 };
 
-export default DeliveryDashboard;
+export default withLiveOrder(DeliveryDashboard);
 
 const styles = StyleSheet.create({
   container: {

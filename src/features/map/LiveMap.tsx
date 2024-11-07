@@ -10,10 +10,11 @@ import {handleFitToPath} from '@utils/mapUtils';
 
 interface LiveMapProps {
   deliveryPersonLocation: any;
-  pickupLocation: any;
+  pickupLocation?: any;
   deliveryLocation: any;
   hasPickedUp: any;
   hasAccepted: any;
+  orderStatus?: string;
 }
 const LiveMap: FC<LiveMapProps> = ({
   deliveryLocation,
@@ -21,10 +22,20 @@ const LiveMap: FC<LiveMapProps> = ({
   pickupLocation,
   hasAccepted,
   hasPickedUp,
+  orderStatus,
 }) => {
   const {mapRef, setMapRef} = useMapRefStore();
 
-  const handleFitButton = () => {};
+  const handleFitButton = () => {
+    handleFitToPath(
+      mapRef,
+      deliveryPersonLocation,
+      pickupLocation,
+      deliveryLocation,
+      hasPickedUp,
+      hasAccepted,
+    );
+  };
 
   useEffect(() => {
     if (mapRef) {
@@ -37,10 +48,19 @@ const LiveMap: FC<LiveMapProps> = ({
         hasAccepted,
       );
     }
-  }, []);
+  }, [mapRef, deliveryPersonLocation, hasAccepted, hasPickedUp]);
   return (
     <View style={styles.container}>
-      <MapViewComponent />
+      <MapViewComponent
+        orderStatus={orderStatus}
+        mapRef={mapRef}
+        setMapRef={setMapRef}
+        hasAccepted={hasAccepted}
+        deliveryLocation={deliveryLocation}
+        deliveryPersonLocation={deliveryPersonLocation}
+        pickupLocation={pickupLocation}
+        hasPickedUp={hasPickedUp}
+      />
       <TouchableOpacity style={styles.fitButton} onPress={handleFitButton}>
         <Icon name="target" size={RFValue(14)} color={Colors.text} />
       </TouchableOpacity>
@@ -60,6 +80,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: Colors.border,
     position: 'relative',
+    flex: 1,
   },
   fitButton: {
     position: 'absolute',

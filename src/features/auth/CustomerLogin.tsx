@@ -31,6 +31,7 @@ const CustomerLogin = () => {
   const animatedValue = useRef(new Animated.Value(0)).current;
 
   const handleAuth = async () => {
+    console.log('user here', user);
     Keyboard.dismiss();
     setLoading(true);
     try {

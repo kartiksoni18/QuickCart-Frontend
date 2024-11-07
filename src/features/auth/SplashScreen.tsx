@@ -22,7 +22,6 @@ interface DecodeToken {
 
 const SplashScreen = () => {
   const {user, setUser} = useAuthStore();
-  console.log('user onspa', user);
 
   const tokenCheck = async () => {
     const accessToken = tokenStorage.getString('accessToken') as string;

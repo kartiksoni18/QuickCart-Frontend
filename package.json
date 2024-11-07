@@ -10,7 +10,8 @@
     "start": "react-native start",
     "test": "jest",
     "pod": "cd ios && pod install && cd ..",
-    "postinstall": "npx patch-package"
+    "postinstall": "npx patch-package",
+    "android-release": "cd android && ./gradlew assembleRelease"
   },
   "dependencies": {
     "@homielab/react-native-auto-scroll": "^0.0.10",
@@ -18,6 +19,7 @@
     "@react-native-community/geolocation": "^3.4.0",
     "@react-navigation/native": "^6.1.18",
     "@react-navigation/native-stack": "^6.11.0",
+    "@stripe/stripe-react-native": "^0.39.0",
     "axios": "^1.7.7",
     "jwt-decode": "^4.0.0",
     "lottie-react-native": "^7.0.0",

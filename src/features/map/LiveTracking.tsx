@@ -13,6 +13,7 @@ import OrderSummary from './OrderSummary';
 
 const LiveTracking = () => {
   const {currentOrder, setCurrentOrder} = useAuthStore();
+  console.log('currentorder', currentOrder);
 
   let msg = 'Packing your order';
   let time = 'Arriving in 10 minutes';
@@ -36,7 +37,7 @@ const LiveTracking = () => {
 
   useEffect(() => {
     fetchOrderDetails();
-  }, []);
+  }, [currentOrder?.status]);
   return (
     <View style={styles.container}>
       <LiveTrackingHeader type="Customer" title={msg} secondTitle={time} />
@@ -44,7 +45,15 @@ const LiveTracking = () => {
         bounces={false}
         contentContainerStyle={styles.scrollContent}
         showsVerticalScrollIndicator={false}>
-        {/* <LiveMap pickupLocation={}/> */}
+        {/* <LiveMap pickupLocation={} deliveryLocation={} deliveryPersonLocation={currentOrder?.deliveryPartner?.liveLocation} ha/> */}
+        <LiveMap
+          orderStatus={currentOrder?.status}
+          deliveryLocation={currentOrder?.deliveryLocation || null}
+          deliveryPersonLocation={currentOrder?.deliveryPartner?.liveLocation}
+          hasAccepted={currentOrder?.status === 'confirmed'}
+          hasPickedUp={currentOrder?.status === 'arriving'}
+          // pickupLocation={currentOrder?.pickupLocation}
+        />
         <View style={styles.flexRow}>
           <View style={styles.iconContainer}>
             <Icon

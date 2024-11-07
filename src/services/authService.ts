@@ -6,12 +6,15 @@ import {resetAndNavigate} from '@utils/NavigationUtils';
 import {appAxios} from './axiosInterceptor';
 
 export const customerLogin = async (userData: any) => {
+  console.log('userData', userData);
   try {
     const response = await axios.post(`${BASE_URL}/customer/login`, userData);
     const {accessToken, refreshToken, customer} = response?.data;
     tokenStorage.set('accessToken', accessToken);
     tokenStorage.set('refreshToken', refreshToken);
     const {user, setUser} = useAuthStore.getState();
+
+    console.log('customer', customer);
 
     if (user) {
       const updatedUser = {
@@ -40,6 +43,9 @@ export const deliveryPartnerLogin = async (email: string, password: string) => {
     tokenStorage.set('refreshToken', refreshToken);
 
     const {user, setUser} = useAuthStore.getState();
+    console.log('email', email, password);
+
+    console.log('branch', deliveryPartner);
 
     if (deliveryPartner) {
       const updatedUser = {
@@ -63,9 +69,10 @@ export const refetchUser = async (setUser: any) => {
     console.log('Login error', error);
   }
 };
+
 export const updateUserLocation = async (data: any, setUser: any) => {
   try {
-    const response = await appAxios.get(`/user`);
+    const response = await appAxios.patch(`/user`, data);
     setUser(response?.data?.user);
   } catch (error) {
     console.log('Login error', error);

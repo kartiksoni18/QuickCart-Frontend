@@ -57,7 +57,8 @@ const Header: FC<HeaderProps> = ({showNotice}) => {
         </View>
         <View style={styles.addressContainer}>
           <CustomText
-            style={{color: '#fff'}}
+            numberOfLines={2}
+            style={{color: '#fff', width: '80%'}}
             fontFamily={Fonts.Regular}
             variant="h8">
             {user?.address || 'Knowhere, Somewhere...'}
@@ -83,6 +84,7 @@ const styles = StyleSheet.create({
   },
   subContainer: {
     // padding: 10,
+    alignItems: 'flex-start',
   },
   estTime: {
     flexDirection: 'row',

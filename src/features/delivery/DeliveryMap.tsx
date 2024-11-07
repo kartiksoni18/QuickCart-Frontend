@@ -18,6 +18,7 @@ import DeliveryDetails from '@features/map/DeliveryDetails';
 import OrderSummary from '@features/map/OrderSummary';
 import {hocStyles} from '@styles/GlobalStyles';
 import CustomButton from '@components/ui/CustomButton';
+import MapView from 'react-native-maps';
 
 const DeliveryMap = () => {
   const {user, setCurrentOrder} = useAuthStore();
@@ -101,7 +102,7 @@ const DeliveryMap = () => {
         'delivered',
       );
       if (data) {
-        setCurrentOrder(data);
+        setCurrentOrder(null);
         Alert.alert('Great!!', 'Hope on to the next one');
       } else {
         Alert.alert('There was an error');
@@ -129,7 +130,9 @@ const DeliveryMap = () => {
         fetchOrderDetails();
       }
     }
+    sendLiveUpdates();
   }, []);
+
   useEffect(() => {
     fetchOrderDetails();
   }, []);
@@ -146,6 +149,7 @@ const DeliveryMap = () => {
 
     return () => Geolocation.clearWatch(watchId);
   }, []);
+
   return (
     <View style={styles.container}>
       <LiveTrackingHeader
@@ -157,7 +161,20 @@ const DeliveryMap = () => {
         bounces={false}
         contentContainerStyle={styles.scrollContent}
         showsVerticalScrollIndicator={false}>
-        <LiveMap />
+        {orderData && (
+          <LiveMap
+            deliveryLocation={orderData?.deliveryLocation || null}
+            deliveryPersonLocation={
+              orderData?.deliveryPartner?.liveLocation || myLocation
+            }
+            hasAccepted={
+              orderData?.deliveryPartner?._id === user?._id &&
+              orderData?.status === 'confirmed'
+            }
+            hasPickedUp={orderData?.status === 'arriving'}
+            pickupLocation={orderData?.pickupLocation}
+          />
+        )}
 
         <DeliveryDetails details={orderData?.customer} />
         <OrderSummary order={orderData} />
@@ -231,6 +248,7 @@ const styles = StyleSheet.create({
     paddingBottom: 150,
     backgroundColor: Colors.backgroundSecondary,
     padding: 15,
+    // flex: 1,
   },
   flexRow: {
     flexDirection: 'row',

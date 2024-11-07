@@ -30,7 +30,8 @@ const ProductOrder = () => {
 
   const handlePlaceOrder = async () => {
     try {
-      // setCurrentOrder(null);
+      navigate('PaymentScreen');
+      return;
       if (currentOrder !== null) {
         Alert.alert('Let your current order be delivered first');
         return;
@@ -137,7 +138,7 @@ const ProductOrder = () => {
                 fontFamily={Fonts.Regular}
                 variant="h8"
                 style={{marginTop: 2}}>
-                Cash on Delivery
+                Card
               </CustomText>
             </View>
             <View style={{width: '70%'}}>
